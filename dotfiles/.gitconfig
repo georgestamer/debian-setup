@@ -1,0 +1,9 @@
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    lg = log --oneline --graph --decorate
+[color]
+    ui = auto
+[pull]
+    rebase = false
