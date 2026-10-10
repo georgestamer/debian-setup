@@ -9,7 +9,7 @@ complet sur une VM Debian vierge, sans intervention manuelle.
 
 ## Utilisation
 ```bash
-git clone <url-du-depot> debian-setup && cd debian-setup
+git clone https://github.com/georgestamer/debian-setup.git debian-setup && cd debian-setup
 cp config.env.example config.env    # puis éditer GIT_NAME et GIT_EMAIL
 ./setup.sh
 exec zsh
