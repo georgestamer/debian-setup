@@ -5,6 +5,9 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export REPO_DIR
 source "$REPO_DIR/scripts/lib.sh"
 
+# Première exécution : crée config.env depuis le modèle
+[[ -f "$REPO_DIR/config.env" ]] || cp "$REPO_DIR/config.env.example" "$REPO_DIR/config.env"
+
 STEPS=(01_packages 02_git 03_zsh 04_dotfiles)
 CURRENT_STEP="init"
 trap 'err "Échec à la ligne $LINENO (étape : $CURRENT_STEP)"' ERR
@@ -17,4 +20,4 @@ for step in "${STEPS[@]}"; do
   bash "$REPO_DIR/scripts/$step.sh"
   ok "✔ $step"
 done
-ok "Terminé."
+ok "Terminé. Lance : exec zsh"
