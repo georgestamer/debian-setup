@@ -6,7 +6,7 @@ PACKAGES=(git curl wget zsh vim)
 
 export DEBIAN_FRONTEND=noninteractive
 info "Mise à jour de l'index apt"
-$SUDO apt-get update -qq
+$SUDO apt-get -o DPkg::Lock::Timeout=300 -o Acquire::Retries=3 update -qq
 
 MISSING=()
 for pkg in "${PACKAGES[@]}"; do
@@ -15,7 +15,7 @@ done
 
 if (( ${#MISSING[@]} )); then
   info "Installation : ${MISSING[*]}"
-  $SUDO apt-get install -y -qq "${MISSING[@]}"
+  $SUDO apt-get -o DPkg::Lock::Timeout=300 -o Acquire::Retries=3 install -y -qq "${MISSING[@]}"
 else
   info "Tous les paquets sont déjà installés"
 fi
